@@ -1,17 +1,56 @@
 [
   {
     "step": 1,
-    "query": "Chào bạn, bạn có thể giới thiệu quy định mượn trả sách cơ bản của Thư viện VinUni không?",
+    "query": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
     "action_type": "FINAL_ANSWER",
-    "thought": "Câu hỏi chung về quy định thư viện, trả lời trực tiếp không cần gọi Tool.",
-    "output": "Quy định mượn trả Thư viện VinUni: tối đa 5 cuốn, thời hạn 14 ngày/cuốn; gia hạn tối đa 2 lần (mỗi lần 7 ngày) nếu chưa có người đặt giữ; phạt trả muộn 5.000 đồng/ngày/cuốn.",
-    "latency_ms": 0.0
+    "thought": "Gemini phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Chào bạn! Tôi là Trợ lý Tác tử Quản lý Thư viện & Tài liệu của Đại học VinUni. \n\nVề **Quy chế Học vụ cơ bản tại Đại học VinUni**, dưới đây là các điểm cốt lõi mà sinh viên cần nắm rõ:\n\n### 1. Hệ thống Tín chỉ & Đào tạo (Credit System)\n* **Đơn vị tín chỉ:** Chương trình đào tạo được xây dựng theo hệ thống tín chỉ chuẩn quốc tế (Mỹ/Châu Âu).\n* **Khối lượng học tập:** Một năm học thường gồm 2 học kỳ chính (Fall & Spring) và có thể có học kỳ hè (Summer). Sinh viên chính quy thường đăng ký từ 12 - 18 tín chỉ mỗi học kỳ chính.\n\n### 2. Thang điểm & Đánh giá (Grading System)\n* **Thang điểm chữ & GPA:** VinUni áp dụng thang điểm chữ (A, B, C, D, F) tương ứng với thang điểm GPA 4.0.\n* **Đánh giá đa thành phần:** Điểm học phần bao gồm điểm chuyên cần/tham gia lớp, bài tập cá nhân/nhóm, thuyết trình, kiểm tra giữa kỳ và thi kết thúc học phần.\n* **Điều kiện duy trì học tập:** Sinh viên cần duy trì điểm GPA tối thiểu theo quy định từng năm để không bị cảnh báo học tập (Academic Probation).\n\n### 3. Yêu cầu Chuyên cần & Liêm chính Học thuật (Academic Integrity)\n* **Chuyên attendance:** Sinh viên được yêu cầu tham gia đầy đủ các buổi học. Vắng mặt quá số buổi quy định (thường là 20% tổng số tiết) có thể dẫn đến việc không được dự thi cuối kỳ.\n* **Liêm chính học thuật:** VinUni tuân thủ nghiêm ngặt quy định chống gian lận, sao chép (plagiarism). Mọi vi phạm về liêm chính học thuật đều bị xử lý nghiêm khắc theo Hội đồng Kỷ luật.\n\n### 4. Điều kiện Tốt nghiệp (Graduation Requirements)\n* Hoàn thành đủ tổng số tín chỉ của chương trình đào tạo.\n* Đạt điểm GPA tích lũy tối thiểu (thường là từ 2.0/4.0 trở lên).\n* Đạt chuẩn đầu ra về tiếng Anh và các kỹ năng/dự án tốt nghiệp (Capstone Project/Internship) theo yêu cầu của từng Viện (College).\n\n---\n💡 **Lưu ý:** Để tra cứu chi tiết từng điều khoản, quy định miễn giảm môn học, hoặc quy chế riêng của từng Viện (College of Arts and Sciences, College of Business and Management, College of Engineering and Computer Science, College of Health Sciences), bạn vui lòng tham khảo **Sổ tay Sinh viên (Student Handbook)** trên cổng MyVinUni hoặc liên hệ **Phòng Phòng Học vụ (Academic Affairs Office - AAO)**.\n\nNếu bạn cần hỗ trợ tra cứu tài liệu, sách tham khảo hoặc gia hạn sách tại Thư viện VinUni, đừng ngần ngại cho tôi biết nhé!",
+    "latency_ms": 8667.98
   },
   {
     "step": 1,
-    "query": "Hãy tra cứu vị trí kệ và tình trạng mượn trả của cuốn sách BK2026001.",
+    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Gemini phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Tôi là Trợ lý Quản lý Thư viện & Tài liệu của VinUni. Hiện tại, tôi chỉ hỗ trợ các tác vụ liên quan đến Thư viện VinUni như:\n\n- Tra cứu vị trí kệ sách, tình trạng mượn/trả và hạn trả của tài liệu (theo mã sách).\n- Gia hạn thời gian mượn sách.\n- Giải đáp các quy định chung của Thư viện.\n\nTôi **không có thẩm quyền và không hỗ trợ tra cứu thông tin học vụ** (điểm số, đăng ký môn học, tiến độ học tập...) của sinh viên. \n\nĐể tra cứu thông tin học vụ của sinh viên **SV2026001**, bạn vui lòng truy cập Cổng thông tin Quản lý Học vụ (Academic Portal / Canvas / myVinUni) hoặc liên hệ Phòng Quản lý Học vụ (Office of the Registrar) của trường để được hỗ trợ.",
+    "latency_ms": 4044.55
+  },
+  {
+    "step": 1,
+    "query": "Tôi muốn gia hạn cuốn sách BK2026001 thêm 7 ngày, mã độc giả là RD2026001.",
     "action_type": "TOOL_EXECUTION",
-    "thought": "Người dùng muốn tra cứu vị trí và tình trạng sách. Gọi library_query.",
+    "thought": "Gemini quyết định gọi công cụ 'renew_loan' với tham số: {\"book_id\": \"BK2026001\", \"extra_days\": 7, \"reader_id\": \"RD2026001\"}",
+    "tool_name": "renew_loan",
+    "arguments": {
+      "book_id": "BK2026001",
+      "extra_days": 7,
+      "reader_id": "RD2026001"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "renewal_id": "RN-BK2026001-99",
+      "book_id": "BK2026001",
+      "reader_id": "RD2026001",
+      "extra_days": 7,
+      "new_due_date": "27/09/2026",
+      "renewals_left": 0,
+      "message": "Gia hạn thành công sách BK2026001 cho độc giả RD2026001 thêm 7 ngày. Hạn trả mới: 27/09/2026."
+    },
+    "latency_ms": 2242.69
+  },
+  {
+    "step": 2,
+    "query": "Tôi muốn gia hạn cuốn sách BK2026001 thêm 7 ngày, mã độc giả là RD2026001.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Gemini phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Yêu cầu gia hạn sách của bạn đã được thực hiện thành công. Dưới đây là thông tin chi tiết:\n\n- **Mã sách:** BK2026001\n- **Mã độc giả:** RD2026001\n- **Mã gia hạn:** RN-BK2026001-99\n- **Số ngày gia hạn thêm:** 7 ngày\n- **Hạn trả mới:** 27/09/2026\n- **Số lượt gia hạn còn lại:** 0 lượt\n\nVui lòng lưu ý hạn trả mới để hoàn trả tài liệu đúng hạn cho Thư viện VinUni.",
+    "latency_ms": 3157.96
+  },
+  {
+    "step": 1,
+    "query": "Kiểm tra tình trạng cuốn BK2026001 giúp tôi. Nếu sách đang được mượn và còn lượt gia hạn thì hãy gia hạn thêm 7 ngày cho độc giả RD2026001.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Gemini quyết định gọi công cụ 'library_query' với tham số: {\"book_id\": \"BK2026001\"}",
     "tool_name": "library_query",
     "arguments": {
       "book_id": "BK2026001"
@@ -30,85 +69,21 @@
         "renewals_left": 1
       }
     },
-    "latency_ms": 0.0
+    "latency_ms": 1973.21
   },
   {
     "step": 2,
-    "query": "Hãy tra cứu vị trí kệ và tình trạng mượn trả của cuốn sách BK2026001.",
-    "action_type": "FINAL_ANSWER",
-    "thought": "Đã đủ Observation để trả lời, không gọi thêm Tool.",
-    "output": "Sách BK2026001 đang ở Kệ A3 - Tầng 2 - Mã kệ AI-204, trạng thái đang mượn (BORROWED), hạn trả 20/09/2026.",
-    "latency_ms": 0.0
-  },
-  {
-    "step": 1,
-    "query": "Tôi muốn gia hạn cuốn sách BK2026001 thêm 7 ngày, mã độc giả là RD2026001.",
-    "action_type": "TOOL_EXECUTION",
-    "thought": "Người dùng yêu cầu gia hạn. Gọi renew_loan.",
-    "tool_name": "renew_loan",
-    "arguments": {
-      "book_id": "BK2026001",
-      "reader_id": "RD2026001",
-      "extra_days": 7
-    },
-    "observation": {
-      "status": "SUCCESS",
-      "renewal_id": "RN-BK2026001-99",
-      "book_id": "BK2026001",
-      "reader_id": "RD2026001",
-      "extra_days": 7,
-      "new_due_date": "27/09/2026",
-      "renewals_left": 0,
-      "message": "Gia hạn thành công sách BK2026001 cho độc giả RD2026001 thêm 7 ngày. Hạn trả mới: 27/09/2026."
-    },
-    "latency_ms": 0.0
-  },
-  {
-    "step": 2,
-    "query": "Tôi muốn gia hạn cuốn sách BK2026001 thêm 7 ngày, mã độc giả là RD2026001.",
-    "action_type": "FINAL_ANSWER",
-    "thought": "Đã có kết quả gia hạn từ MCP Server. Tổng hợp Final Answer.",
-    "output": "Đã gia hạn thành công tài liệu theo yêu cầu. Vui lòng trả sách đúng hạn mới được hệ thống ghi nhận.",
-    "latency_ms": 0.0
-  },
-  {
-    "step": 1,
     "query": "Kiểm tra tình trạng cuốn BK2026001 giúp tôi. Nếu sách đang được mượn và còn lượt gia hạn thì hãy gia hạn thêm 7 ngày cho độc giả RD2026001.",
     "action_type": "TOOL_EXECUTION",
-    "thought": "Người dùng muốn tra cứu vị trí và tình trạng sách. Gọi library_query.",
-    "tool_name": "library_query",
+    "thought": "Gemini quyết định gọi công cụ 'renew_loan' với tham số: {\"extra_days\": 7, \"reader_id\": \"RD2026001\", \"book_id\": \"BK2026001\"}",
+    "tool_name": "renew_loan",
     "arguments": {
+      "extra_days": 7,
+      "reader_id": "RD2026001",
       "book_id": "BK2026001"
     },
     "observation": {
       "status": "SUCCESS",
-      "book_id": "BK2026001",
-      "data": {
-        "title": "Artificial Intelligence: A Modern Approach",
-        "author": "Stuart Russell, Peter Norvig",
-        "shelf_location": "Kệ A3 - Tầng 2 - Mã kệ AI-204",
-        "status": "BORROWED",
-        "borrower_id": "RD2026001",
-        "borrower_name": "Nguyễn Văn An",
-        "due_date": "20/09/2026",
-        "renewals_left": 1
-      }
-    },
-    "latency_ms": 0.0
-  },
-  {
-    "step": 2,
-    "query": "Kiểm tra tình trạng cuốn BK2026001 giúp tôi. Nếu sách đang được mượn và còn lượt gia hạn thì hãy gia hạn thêm 7 ngày cho độc giả RD2026001.",
-    "action_type": "TOOL_EXECUTION",
-    "thought": "Sách đang được mượn và còn lượt gia hạn. Gọi renew_loan.",
-    "tool_name": "renew_loan",
-    "arguments": {
-      "book_id": "BK2026001",
-      "reader_id": "RD2026001",
-      "extra_days": 7
-    },
-    "observation": {
-      "status": "SUCCESS",
       "renewal_id": "RN-BK2026001-99",
       "book_id": "BK2026001",
       "reader_id": "RD2026001",
@@ -117,7 +92,7 @@
       "renewals_left": 0,
       "message": "Gia hạn thành công sách BK2026001 cho độc giả RD2026001 thêm 7 ngày. Hạn trả mới: 27/09/2026."
     },
-    "latency_ms": 0.0
+    "latency_ms": 3269.93
   },
   {
     "step": 3,
@@ -125,7 +100,7 @@
     "action_type": "FINAL_ANSWER",
     "thought": "Đã có kết quả gia hạn từ MCP Server. Tổng hợp Final Answer.",
     "output": "Đã gia hạn thành công tài liệu theo yêu cầu. Vui lòng trả sách đúng hạn mới được hệ thống ghi nhận.",
-    "latency_ms": 0.0
+    "latency_ms": 393.05
   },
   {
     "step": 1,
@@ -140,7 +115,7 @@
       "status": "NOT_FOUND",
       "message": "Không tìm thấy tài liệu có mã 'BK9999999' trong catalog Thư viện VinUni."
     },
-    "latency_ms": 0.0
+    "latency_ms": 442.47
   },
   {
     "step": 2,
@@ -148,6 +123,6 @@
     "action_type": "FINAL_ANSWER",
     "thought": "Observation trả về NOT_FOUND. Đưa ra Final Answer, không bịa dữ liệu.",
     "output": "Không tìm thấy mã sách trong catalog Thư viện VinUni. Vui lòng kiểm tra lại mã tài liệu.",
-    "latency_ms": 0.0
+    "latency_ms": 427.35
   }
 ]

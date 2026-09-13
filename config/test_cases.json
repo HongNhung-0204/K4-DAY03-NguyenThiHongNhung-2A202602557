@@ -2,15 +2,15 @@
   {
     "id": "TC01",
     "type": "direct_query",
-    "question": "Chào bạn, bạn có thể giới thiệu quy định mượn trả sách cơ bản của Thư viện VinUni không?",
-    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt về quy định thư viện (thời hạn mượn, số cuốn, phạt quá hạn), không cần gọi bất kỳ Tool nào.",
+    "question": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
+    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt, không cần gọi bất kỳ Tool nào.",
     "complexity": "Low"
   },
   {
     "id": "TC02",
     "type": "single_tool_query",
-    "question": "Hãy tra cứu vị trí kệ và tình trạng mượn trả của cuốn sách BK2026001.",
-    "expected_behavior": "Agent nhận diện nhu cầu tra cứu catalog, tự động phát sinh Tool Call tra cứu tài liệu với mã BK2026001 (vị trí kệ, tình trạng sẵn sàng/đang mượn, hạn trả).",
+    "question": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "expected_behavior": "Agent nhận diện nhu cầu tra cứu, tự động phát sinh Tool Call 'academic_query' với mã SV2026001.",
     "complexity": "Medium"
   },
   {
