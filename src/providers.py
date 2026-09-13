@@ -36,28 +36,74 @@ class MockOfflineProvider(BaseLLMProvider):
 
     def generate_with_tools(self, prompt: str, tools_schema: List[Dict[str, Any]], system_prompt: str = "") -> Dict[str, Any]:
         prompt_lower = prompt.lower()
-        
-        # Mô phỏng nhận diện intent gọi Tool
-        if "sv2026001" in prompt_lower and "đặt lịch" in prompt_lower:
-            return {
-                "type": "tool_call",
-                "tool_name": "schedule_appointment",
-                "arguments": {"student_id": "SV2026001", "datetime_str": "14:00 15/09/2026", "advisor_name": "PGS.TS Nguyễn Văn A"},
-                "thought": "Người dùng yêu cầu đặt lịch hẹn tư vấn cho sinh viên SV2026001. Tôi sẽ gọi tool schedule_appointment."
-            }
-        elif "sv2026001" in prompt_lower or "tra cứu" in prompt_lower:
-            return {
-                "type": "tool_call",
-                "tool_name": "academic_query",
-                "arguments": {"student_id": "SV2026001"},
-                "thought": "Người dùng muốn tra cứu thông tin học vụ của sinh viên SV2026001. Tôi sẽ gọi tool academic_query."
-            }
+        if "câu hỏi gốc của người dùng:" in prompt_lower:
+            user_part = prompt_lower.split("câu hỏi gốc của người dùng:", 1)[1]
+            user_part = user_part.split("observation từ công cụ", 1)[0]
         else:
+            user_part = prompt_lower
+        has_observation = "observation từ công cụ" in prompt_lower
+
+        if has_observation:
+            if "not_found" in prompt_lower:
+                return {
+                    "type": "text",
+                    "content": "Không tìm thấy mã sách trong catalog Thư viện VinUni. Vui lòng kiểm tra lại mã tài liệu.",
+                    "thought": "Observation trả về NOT_FOUND. Đưa ra Final Answer, không bịa dữ liệu."
+                }
+            if "failed" in prompt_lower or "hết lượt" in prompt_lower:
+                return {
+                    "type": "text",
+                    "content": "Không thể gia hạn lúc này vì điều kiện mượn/trả không đủ (hết lượt hoặc sai độc giả).",
+                    "thought": "Observation cho thấy gia hạn thất bại. Trả lời trung thực, không bịa dữ liệu."
+                }
+            if "renewal_id" in prompt_lower or "gia hạn thành công" in prompt_lower:
+                return {
+                    "type": "text",
+                    "content": "Đã gia hạn thành công tài liệu theo yêu cầu. Vui lòng trả sách đúng hạn mới được hệ thống ghi nhận.",
+                    "thought": "Đã có kết quả gia hạn từ MCP Server. Tổng hợp Final Answer."
+                }
+            if "gia hạn" in user_part and "bk2026001" in user_part:
+                return {
+                    "type": "tool_call",
+                    "tool_name": "renew_loan",
+                    "arguments": {"book_id": "BK2026001", "reader_id": "RD2026001", "extra_days": 7},
+                    "thought": "Sách đang được mượn và còn lượt gia hạn. Gọi renew_loan."
+                }
             return {
                 "type": "text",
-                "content": f"[Mock Agent Response]: Xin chào! Quy chế học vụ VinUni yêu cầu sinh viên tích lũy tối thiểu 120 tín chỉ và duy trì GPA trên 2.0 để tốt nghiệp.",
-                "thought": "Câu hỏi chung về quy chế học vụ, trả lời trực tiếp không cần gọi Tool."
+                "content": "Sách BK2026001 đang ở Kệ A3 - Tầng 2 - Mã kệ AI-204, trạng thái đang mượn (BORROWED), hạn trả 20/09/2026.",
+                "thought": "Đã đủ Observation để trả lời, không gọi thêm Tool."
             }
+
+        if "bk9999999" in user_part:
+            return {
+                "type": "tool_call",
+                "tool_name": "library_query",
+                "arguments": {"book_id": "BK9999999"},
+                "thought": "Người dùng tra cứu mã sách không chắc tồn tại. Gọi library_query."
+            }
+        if "gia hạn" in user_part and "kiểm tra" not in user_part:
+            return {
+                "type": "tool_call",
+                "tool_name": "renew_loan",
+                "arguments": {"book_id": "BK2026001", "reader_id": "RD2026001", "extra_days": 7},
+                "thought": "Người dùng yêu cầu gia hạn. Gọi renew_loan."
+            }
+        if "bk2026001" in user_part or "tra cứu" in user_part:
+            return {
+                "type": "tool_call",
+                "tool_name": "library_query",
+                "arguments": {"book_id": "BK2026001"},
+                "thought": "Người dùng muốn tra cứu vị trí và tình trạng sách. Gọi library_query."
+            }
+        return {
+            "type": "text",
+            "content": (
+                "Quy định mượn trả Thư viện VinUni: tối đa 5 cuốn, thời hạn 14 ngày/cuốn; "
+                "gia hạn tối đa 2 lần (mỗi lần 7 ngày) nếu chưa có người đặt giữ; phạt trả muộn 5.000 đồng/ngày/cuốn."
+            ),
+            "thought": "Câu hỏi chung về quy định thư viện, trả lời trực tiếp không cần gọi Tool."
+        }
 
 
 class GeminiProvider(BaseLLMProvider):
@@ -93,7 +139,7 @@ class GeminiProvider(BaseLLMProvider):
             function_declarations = []
             for tool in tools_schema:
                 # Bỏ qua các tool schema chưa được định nghĩa hoàn chỉnh
-                if not tool.get("name") or not tool.get("parameters"):
+                if not tool.get("name") or not tool.get("parameters", {}).get("properties"):
                     continue
                 function_declarations.append({
                     "name": tool["name"],

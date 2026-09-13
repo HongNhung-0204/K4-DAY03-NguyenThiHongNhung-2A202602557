@@ -1,29 +1,153 @@
 [
   {
     "step": 1,
-    "query": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
+    "query": "Chào bạn, bạn có thể giới thiệu quy định mượn trả sách cơ bản của Thư viện VinUni không?",
     "action_type": "FINAL_ANSWER",
-    "thought": "Câu hỏi chung về quy chế học vụ, trả lời trực tiếp không cần gọi Tool.",
-    "output": "[Mock Agent Response]: Xin chào! Quy chế học vụ VinUni yêu cầu sinh viên tích lũy tối thiểu 120 tín chỉ và duy trì GPA trên 2.0 để tốt nghiệp.",
-    "latency_ms": 2845.93
+    "thought": "Câu hỏi chung về quy định thư viện, trả lời trực tiếp không cần gọi Tool.",
+    "output": "Quy định mượn trả Thư viện VinUni: tối đa 5 cuốn, thời hạn 14 ngày/cuốn; gia hạn tối đa 2 lần (mỗi lần 7 ngày) nếu chưa có người đặt giữ; phạt trả muộn 5.000 đồng/ngày/cuốn.",
+    "latency_ms": 0.0
   },
   {
     "step": 1,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "query": "Hãy tra cứu vị trí kệ và tình trạng mượn trả của cuốn sách BK2026001.",
     "action_type": "TOOL_EXECUTION",
-    "tool_name": "academic_query",
+    "thought": "Người dùng muốn tra cứu vị trí và tình trạng sách. Gọi library_query.",
+    "tool_name": "library_query",
     "arguments": {
-      "student_id": "SV2026001"
+      "book_id": "BK2026001"
     },
-    "observation": {},
-    "latency_ms": 799.12
+    "observation": {
+      "status": "SUCCESS",
+      "book_id": "BK2026001",
+      "data": {
+        "title": "Artificial Intelligence: A Modern Approach",
+        "author": "Stuart Russell, Peter Norvig",
+        "shelf_location": "Kệ A3 - Tầng 2 - Mã kệ AI-204",
+        "status": "BORROWED",
+        "borrower_id": "RD2026001",
+        "borrower_name": "Nguyễn Văn An",
+        "due_date": "20/09/2026",
+        "renewals_left": 1
+      }
+    },
+    "latency_ms": 0.0
   },
   {
     "step": 2,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "query": "Hãy tra cứu vị trí kệ và tình trạng mượn trả của cuốn sách BK2026001.",
     "action_type": "FINAL_ANSWER",
-    "thought": "Tổng hợp kết quả từ MCP Server thành công.",
-    "output": "Chưa thể trả lời chi tiết do chưa nhận được dữ liệu từ MCP Server (hãy hoàn thành TODO 2.1).",
-    "latency_ms": 10.0
+    "thought": "Đã đủ Observation để trả lời, không gọi thêm Tool.",
+    "output": "Sách BK2026001 đang ở Kệ A3 - Tầng 2 - Mã kệ AI-204, trạng thái đang mượn (BORROWED), hạn trả 20/09/2026.",
+    "latency_ms": 0.0
+  },
+  {
+    "step": 1,
+    "query": "Tôi muốn gia hạn cuốn sách BK2026001 thêm 7 ngày, mã độc giả là RD2026001.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Người dùng yêu cầu gia hạn. Gọi renew_loan.",
+    "tool_name": "renew_loan",
+    "arguments": {
+      "book_id": "BK2026001",
+      "reader_id": "RD2026001",
+      "extra_days": 7
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "renewal_id": "RN-BK2026001-99",
+      "book_id": "BK2026001",
+      "reader_id": "RD2026001",
+      "extra_days": 7,
+      "new_due_date": "27/09/2026",
+      "renewals_left": 0,
+      "message": "Gia hạn thành công sách BK2026001 cho độc giả RD2026001 thêm 7 ngày. Hạn trả mới: 27/09/2026."
+    },
+    "latency_ms": 0.0
+  },
+  {
+    "step": 2,
+    "query": "Tôi muốn gia hạn cuốn sách BK2026001 thêm 7 ngày, mã độc giả là RD2026001.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Đã có kết quả gia hạn từ MCP Server. Tổng hợp Final Answer.",
+    "output": "Đã gia hạn thành công tài liệu theo yêu cầu. Vui lòng trả sách đúng hạn mới được hệ thống ghi nhận.",
+    "latency_ms": 0.0
+  },
+  {
+    "step": 1,
+    "query": "Kiểm tra tình trạng cuốn BK2026001 giúp tôi. Nếu sách đang được mượn và còn lượt gia hạn thì hãy gia hạn thêm 7 ngày cho độc giả RD2026001.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Người dùng muốn tra cứu vị trí và tình trạng sách. Gọi library_query.",
+    "tool_name": "library_query",
+    "arguments": {
+      "book_id": "BK2026001"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "book_id": "BK2026001",
+      "data": {
+        "title": "Artificial Intelligence: A Modern Approach",
+        "author": "Stuart Russell, Peter Norvig",
+        "shelf_location": "Kệ A3 - Tầng 2 - Mã kệ AI-204",
+        "status": "BORROWED",
+        "borrower_id": "RD2026001",
+        "borrower_name": "Nguyễn Văn An",
+        "due_date": "20/09/2026",
+        "renewals_left": 1
+      }
+    },
+    "latency_ms": 0.0
+  },
+  {
+    "step": 2,
+    "query": "Kiểm tra tình trạng cuốn BK2026001 giúp tôi. Nếu sách đang được mượn và còn lượt gia hạn thì hãy gia hạn thêm 7 ngày cho độc giả RD2026001.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Sách đang được mượn và còn lượt gia hạn. Gọi renew_loan.",
+    "tool_name": "renew_loan",
+    "arguments": {
+      "book_id": "BK2026001",
+      "reader_id": "RD2026001",
+      "extra_days": 7
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "renewal_id": "RN-BK2026001-99",
+      "book_id": "BK2026001",
+      "reader_id": "RD2026001",
+      "extra_days": 7,
+      "new_due_date": "27/09/2026",
+      "renewals_left": 0,
+      "message": "Gia hạn thành công sách BK2026001 cho độc giả RD2026001 thêm 7 ngày. Hạn trả mới: 27/09/2026."
+    },
+    "latency_ms": 0.0
+  },
+  {
+    "step": 3,
+    "query": "Kiểm tra tình trạng cuốn BK2026001 giúp tôi. Nếu sách đang được mượn và còn lượt gia hạn thì hãy gia hạn thêm 7 ngày cho độc giả RD2026001.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Đã có kết quả gia hạn từ MCP Server. Tổng hợp Final Answer.",
+    "output": "Đã gia hạn thành công tài liệu theo yêu cầu. Vui lòng trả sách đúng hạn mới được hệ thống ghi nhận.",
+    "latency_ms": 0.0
+  },
+  {
+    "step": 1,
+    "query": "Hãy tra cứu vị trí và tình trạng mượn trả của cuốn sách BK9999999.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "Người dùng tra cứu mã sách không chắc tồn tại. Gọi library_query.",
+    "tool_name": "library_query",
+    "arguments": {
+      "book_id": "BK9999999"
+    },
+    "observation": {
+      "status": "NOT_FOUND",
+      "message": "Không tìm thấy tài liệu có mã 'BK9999999' trong catalog Thư viện VinUni."
+    },
+    "latency_ms": 0.0
+  },
+  {
+    "step": 2,
+    "query": "Hãy tra cứu vị trí và tình trạng mượn trả của cuốn sách BK9999999.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Observation trả về NOT_FOUND. Đưa ra Final Answer, không bịa dữ liệu.",
+    "output": "Không tìm thấy mã sách trong catalog Thư viện VinUni. Vui lòng kiểm tra lại mã tài liệu.",
+    "latency_ms": 0.0
   }
 ]

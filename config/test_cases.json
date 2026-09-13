@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC01",
+    "type": "direct_query",
+    "question": "Chào bạn, bạn có thể giới thiệu quy định mượn trả sách cơ bản của Thư viện VinUni không?",
+    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt về quy định thư viện (thời hạn mượn, số cuốn, phạt quá hạn), không cần gọi bất kỳ Tool nào.",
+    "complexity": "Low"
+  },
+  {
+    "id": "TC02",
+    "type": "single_tool_query",
+    "question": "Hãy tra cứu vị trí kệ và tình trạng mượn trả của cuốn sách BK2026001.",
+    "expected_behavior": "Agent nhận diện nhu cầu tra cứu catalog, tự động phát sinh Tool Call tra cứu tài liệu với mã BK2026001 (vị trí kệ, tình trạng sẵn sàng/đang mượn, hạn trả).",
+    "complexity": "Medium"
+  },
+  {
+    "id": "TC03",
+    "type": "appointment_booking",
+    "question": "Tôi muốn gia hạn cuốn sách BK2026001 thêm 7 ngày, mã độc giả là RD2026001.",
+    "expected_behavior": "Agent tự động phát sinh Tool Call gia hạn tài liệu với đúng mã sách BK2026001, mã độc giả RD2026001 và thời hạn gia hạn 7 ngày.",
+    "complexity": "Medium"
+  },
+  {
+    "id": "TC04",
+    "type": "multi_step_reasoning",
+    "question": "Kiểm tra tình trạng cuốn BK2026001 giúp tôi. Nếu sách đang được mượn và còn lượt gia hạn thì hãy gia hạn thêm 7 ngày cho độc giả RD2026001.",
+    "expected_behavior": "Agent thực hiện chuỗi suy luận ReAct: tra cứu vị trí/tình trạng sách trước, quan sát kết quả mượn-trả, sau đó mới gọi tool gia hạn nếu đủ điều kiện.",
+    "complexity": "High"
+  },
+  {
+    "id": "TC05",
+    "type": "edge_case_handling",
+    "question": "Hãy tra cứu vị trí và tình trạng mượn trả của cuốn sách BK9999999.",
+    "expected_behavior": "Agent nhận kết quả NOT_FOUND từ Tool và đưa ra phản hồi lịch sự, chính xác, không bịa đặt vị trí kệ hay hạn trả.",
+    "complexity": "Medium"
+  }
+]
